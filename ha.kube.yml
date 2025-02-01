@@ -12,8 +12,8 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: ha2
-  name: ha2
+    app: ha
+  name: ha
 spec:
   containers:
     - name: homeassistant
@@ -68,7 +68,7 @@ spec:
           name: ha-mqtt-config
 
     - name: appdaemon
-      image: ghcr.io/home-assistant/home-assistant:stable
+      image: docker.io/acockburn/appdaemon:latest
       volumeMounts:
         - mountPath: /etc/localtime
           name: etc-localtime
@@ -97,32 +97,32 @@ spec:
 
     - name: ha-homeassistant-config
       hostPath:
-        path: /srv/ha2/homeassistant/config
+        path: /srv/ha/homeassistant/config
         type: Directory
 
     - name: ha-mqtt-config
       hostPath:
-        path: /srv/ha2/mosquitto/config
-        type: Directory
+        path: /srv/ha/mosquitto/config/mosquitto.conf
+        type: File
 
     - name: ha-mqtt-data
       hostPath:
-        path: /srv/ha2/mosquitto/data
+        path: /srv/ha/mosquitto/data
         type: Directory
 
     - name: ha-mqtt-log
       hostPath:
-        path: /srv/ha2/mosquitto/log
+        path: /srv/ha/mosquitto/log
         type: Directory
 
     - name: ha-z2m-data
       hostPath:
-        path: /srv/ha2/zigbee2mqtt/data
+        path: /srv/ha/zigbee2mqtt/data
         type: Directory
 
     - name: ha-appdaemon-conf
       hostPath:
-        path: /srv/ha2/appdaemon/conf
+        path: /srv/ha/appdaemon/conf
         type: Directory
 
     - name: dev-ttyUSB0
