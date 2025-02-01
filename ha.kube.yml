@@ -45,7 +45,7 @@ spec:
           readOnly: true
         - mountPath: /app/data
           name: ha-z2m-data
-        - mountPath: /dev/ttyACM0
+        - mountPath: /dev/ttyUSB0
           name: dev-ttyUSB0
       ports:
         - containerPort: 8080
